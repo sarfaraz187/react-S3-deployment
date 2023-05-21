@@ -8,7 +8,7 @@ name: s3-deployment
 on:
   # Triggers the workflow on push or pull request events but only for the Development branch
   push:
-    branches: [ master ]
+    branches: [ development ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,4 +30,4 @@ jobs:
       - name: React Demo Application
         run: yarn install && yarn run build
       - name: Deploy app build to S3 bucket
-        run: aws s3 sync ./ s3://<bucket-name> --delete
+        run: aws s3 sync ./dist/ s3://se2-terraform-bucket --delete

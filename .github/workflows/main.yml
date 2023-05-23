@@ -27,6 +27,6 @@ jobs:
       - name: React Demo Application
         run: yarn install && yarn run build
       - name: Deploy app build to S3 bucket
-        run: aws s3 sync ./dist/ s3://se2-terraform-bucket --delete
+        run: aws s3 sync ./dist/ s3://se2-react-bucket --delete
       - name: Invalidate cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/*"
